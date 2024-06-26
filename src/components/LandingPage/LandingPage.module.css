@@ -1,0 +1,32 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 5rem;
+  background-color: #333;
+  color: white;
+}
+.header__logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+.header__logo-image {
+  width: 40px;
+}
+.header__nav {
+  display: flex;
+  gap: 1rem;
+}
+.header__nav a {
+  color: white;
+  text-decoration: none;
+}
+
+#landingPage {
+  width: 1280px;
+  margin: 0 auto;
+}/*# sourceMappingURL=LandingPage.module.css.map */
