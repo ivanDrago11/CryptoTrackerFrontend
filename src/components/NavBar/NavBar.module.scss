@@ -1,0 +1,55 @@
+/* src/Navbar.css */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #333;
+  color: white;
+}
+
+.navbar__logo {
+  font-size: 1.5rem;
+}
+
+.navbar__menu {
+  display: flex;
+  gap: 1rem;
+}
+
+.navbar__link {
+  color: white;
+  text-decoration: none;
+}
+
+.navbar__toggle {
+  display: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .navbar__menu {
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    position: absolute;
+    top: 3rem;
+    right: 0;
+    background-color: #333;
+    width: 100%;
+    text-align: center;
+  }
+
+  .navbar__menu--open {
+    display: flex;
+  }
+
+  .navbar__toggle {
+    display: block;
+  }
+}

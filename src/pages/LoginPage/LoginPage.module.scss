@@ -1,0 +1,55 @@
+@import "../../assets/css/variables.scss";
+
+///////////////////////////
+/// LOGING SECTION      ///
+///////////////////////////
+
+.main {
+  &__form {
+    margin: 10rem auto;
+    padding: 2rem 5rem;
+    background-color: $primary-color;
+    width: 30%;
+    border-radius: 20px;
+
+    &-errorLabel {
+      margin: -15px 0 10px 0;
+      font-size: 0.9rem;
+      color: $primary-color;
+    }
+    &-errorLabel--true {
+      color: #e63946;
+    }
+
+    &-box {
+      margin: 0 1rem;
+      display: flex;
+      flex-direction: column;
+
+      h2 {
+        margin: 0 0 10px 0;
+        font-weight: 500;
+      }
+      input {
+        padding: 0.5rem;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        border: 1px solid $font-color;
+      }
+      button {
+        padding: 0.5rem;
+        margin: 10px 0;
+        background-color: $font-color;
+        color: $primary-color;
+        border-radius: 10px;
+      }
+      a {
+        font-weight: 600;
+      }
+    }
+
+    &-box--close {
+      display: none;
+    }
+  }
+}

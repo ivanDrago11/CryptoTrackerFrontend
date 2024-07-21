@@ -1,0 +1,22 @@
+.cryptoTable {
+  width: 68rem;
+  margin: 0 auto;
+  margin-bottom: 2rem;
+
+  .tableRow {
+    .icon {
+      opacity: 0;
+      // transition: color 0.2s;
+    }
+    .icon:hover {
+      color: rgba(0, 0, 0, 0.598);
+    }
+
+    &:hover {
+      // background-color: red !important;
+      .icon {
+        opacity: 1 !important ;
+      }
+    }
+  }
+}

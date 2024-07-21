@@ -1,0 +1,113 @@
+@import "../../../assets/css/variables.scss";
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  align-items: center;
+  padding: 1rem 5rem;
+  background-color: $primary-color;
+
+  a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.3s ease, color 0.3s ease;
+  }
+  a:hover {
+    color: #6c757d;
+  }
+
+  &__leftSide {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.5rem;
+    font-weight: 600;
+
+    &-image {
+      width: 40px;
+    }
+  }
+
+  &__navBar {
+    display: flex;
+    gap: 1rem;
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+  }
+
+  &__logoutButton {
+    right: 0;
+    padding: 6px 14px;
+    background-color: $font-color;
+    color: $primary-color;
+    font-weight: 500;
+    border-radius: 10px;
+  }
+
+  &__sideBar {
+    background-color: rgba(0, 0, 0, 0.632);
+    backdrop-filter: blur(5px);
+    // filter: blur(0px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    position: fixed;
+    z-index: 999;
+    right: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    font-size: 2rem;
+    font-weight: 600;
+    transform: translateX(100%);
+    transition: transform 0.35s ease-in-out;
+
+    a:nth-child(2) {
+      margin-top: 5rem;
+    }
+
+    &__toggleButton {
+      font-size: 4rem;
+      position: fixed;
+      right: 2rem;
+      top: 1rem;
+    }
+  }
+
+  &__sideBar--open {
+    transform: translateX(0);
+  }
+
+  &__toggleButton {
+    display: none;
+  }
+}
+
+/////////////////////////////
+/// Responsive SECTION    ///
+/////////////////////////////
+
+@media (max-width: 530px) {
+  .header {
+    padding: 1rem 2rem;
+    &__logoutButton,
+    &__navBar {
+      display: none;
+    }
+
+    &__toggleButton {
+      display: block;
+    }
+  }
+}

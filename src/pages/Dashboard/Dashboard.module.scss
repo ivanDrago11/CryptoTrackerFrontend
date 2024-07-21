@@ -1,0 +1,43 @@
+@import "../../assets/css/variables.scss";
+
+.main {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+
+  &__dashboard {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    border-left: 1px solid rgba(255, 255, 255, 0.106);
+
+    &__cryptoTrend {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+      justify-content: center;
+
+      &-cryptoBox {
+        width: 20rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        padding: 1rem;
+        background-color: $primary-color;
+        border-radius: 10px;
+
+        p {
+          margin: 0.2rem;
+        }
+      }
+    }
+
+    // &__cryptoTable {
+    //   width: 68rem;
+    //   margin: 0 auto;
+    //   margin-bottom: 2rem;
+    // }
+  }
+}

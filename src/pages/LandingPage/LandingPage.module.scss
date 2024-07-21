@@ -1,0 +1,156 @@
+@import "../../assets/css/variables.scss";
+
+///////////////////////////
+/// landingPage SECTION ///
+///////////////////////////
+
+.home {
+  padding: 3rem 30rem;
+  text-align: center;
+  background-color: $secondary-color;
+
+  &__button {
+    text-decoration: none;
+    display: inline-block;
+    padding: 0.8rem 1.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid $font-color;
+    background-color: $primary-color;
+    color: $font-color;
+    transition: background-color 0.4s ease, color 0.4s ease;
+
+    &:hover {
+      background-color: $font-color;
+      color: $primary-color;
+    }
+  }
+}
+
+///////////////////////////
+/// Features SECTION    ///
+///////////////////////////
+
+.features {
+  background-color: $primary-color;
+
+  text-align: center;
+  padding: 2.5rem 0;
+
+  h2 {
+    margin: 0;
+  }
+
+  &__list {
+    display: flex;
+    justify-content: center;
+    gap: 6rem;
+    padding: 0 12rem;
+
+    &__item {
+      width: 23rem;
+
+      &-icon {
+        background-color: red;
+        font-size: 50px;
+      }
+      p {
+        font-size: 0.8rem;
+        margin: 0;
+      }
+      h4 {
+        margin-bottom: 0.2rem;
+      }
+    }
+  }
+}
+
+///////////////////////////
+/// Responsive SECTION    ///
+///////////////////////////
+
+@media (max-width: 1580px) {
+  .home {
+    padding: 3rem 28rem;
+  }
+}
+@media (max-width: 1515px) {
+  .home {
+    padding: 3rem 24rem;
+  }
+}
+
+@media (max-width: 1265px) {
+  .home {
+    padding: 3rem 20rem;
+  }
+  .features {
+    &__list {
+      gap: 4rem;
+      padding: 0 6rem;
+    }
+  }
+}
+
+@media (max-width: 1120px) {
+  .home {
+    padding: 3rem 16rem;
+  }
+}
+
+@media (max-width: 1010px) {
+  .features {
+    &__list {
+      gap: 2rem;
+      padding: 0 3rem;
+    }
+  }
+}
+
+@media (max-width: 850px) {
+  html {
+    font-size: 14px; /* 1rem = 12px */
+  }
+}
+
+@media (max-width: 740px) {
+  html {
+    font-size: 12px; /* 1rem = 12px */
+  }
+}
+
+@media (max-width: 740px) {
+  html {
+    font-size: 11px; /* 1rem = 12px */
+  }
+}
+@media (max-width: 580px) {
+  html {
+    font-size: 10px; /* 1rem = 12px */
+  }
+}
+
+@media (max-width: 530px) {
+  html {
+    font-size: 14px; /* 1rem = 12px */
+  }
+  .home {
+    padding: 3rem 2rem;
+  }
+  .features {
+    &__list {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 5rem;
+    }
+  }
+  .header {
+    padding: 1rem 2rem;
+    &__navBar {
+      display: none;
+    }
+    &__toggleButton {
+      display: block;
+    }
+  }
+}
