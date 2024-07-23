@@ -21,7 +21,7 @@ const theme = createTheme({
     MuiTableRow: {
       styleOverrides: {
         root: {
-          backgroundColor: "black",
+          backgroundColor: "#121111",
           color: "white",
           "&:hover": {
             backgroundColor: "#f8f9fa !important",

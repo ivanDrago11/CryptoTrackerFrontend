@@ -2,12 +2,15 @@ import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
-import { deleteItemThunk } from "../../store/cryptoListSlice";
+import { deleteWalletThunk, Wallet } from "../../store/cryptoWalletSlice";
 import SettingsIcon from "@mui/icons-material/Settings";
-import styles from "./CryptoListsSection.module.scss";
+import styles from "./CryptoWalletList.module.scss";
+import { useNavigate } from "react-router-dom";
+import { setPage } from "../../store/headerSlice";
 
-export interface CryptoListsSectionProps {
+export interface CryptoWalletListProps {
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
+  setSelectedWallet: React.Dispatch<React.SetStateAction<Wallet | null>>;
   setListName: React.Dispatch<
     React.SetStateAction<{
       id: number;
@@ -15,18 +18,18 @@ export interface CryptoListsSectionProps {
     }>
   >;
   setIsEditing: React.Dispatch<React.SetStateAction<boolean>>;
-  modalType: string;
   setModalType: React.Dispatch<React.SetStateAction<string>>;
 }
 // CryptoList Component
-const CryptoListsSection: React.FC<CryptoListsSectionProps> = ({
+const CryptoWalletList: React.FC<CryptoWalletListProps> = ({
   setListName,
   setShowModal,
   setIsEditing,
   setModalType,
+  setSelectedWallet,
 }) => {
   // Redux state and dispatch
-  const items = useSelector((state: RootState) => state.items.items);
+  const wallets = useSelector((state: RootState) => state.wallets.wallets);
   const dispatch = useDispatch<ThunkDispatch<RootState, unknown, AnyAction>>();
 
   // Refs and state
@@ -34,7 +37,7 @@ const CryptoListsSection: React.FC<CryptoListsSectionProps> = ({
   // const [showModal, setShowModal] = useState(false);
 
   // states
-
+  const navigate = useNavigate();
   const [dropdownVisible, setDropdownVisible] = useState<string | null>(null);
   const [activeListItem, setActiveListItem] = useState<string | null>(null);
 
@@ -63,67 +66,80 @@ const CryptoListsSection: React.FC<CryptoListsSectionProps> = ({
     };
   }, []);
 
-  // Handle adding a new item
+  // Handle adding a new wallet
 
-  // Handle deleting an item (currently a placeholder)
+  // Handle deleting an wallet (currently a placeholder)
   const handleDeleteItem = (id: number) => {
-    if (window.confirm("Are you sure you want to delete this item?")) {
-      dispatch(deleteItemThunk({ id }));
+    if (window.confirm("Are you sure you want to delete this wallet?")) {
+      dispatch(deleteWalletThunk({ id }));
     }
+  };
+
+  const handleNavigation = (page: string, wallet: Wallet) => {
+    navigate(page, { state: { wallet: wallet } });
+    dispatch(setPage(page));
   };
 
   return (
     <>
       <section className={styles["manageList"]}>
-        <h3 className={styles["manageList-title"]}>Your Lists</h3>
+        <h3 className={styles["manageList-title"]}>Your Wallets</h3>
         <button
           className={styles["manageList-button"]}
           onClick={() => {
             setListName({ id: -1, name: "" });
             setIsEditing(false);
             setShowModal(true);
-            setModalType("form");
+            setModalType("addNewWallet");
           }}
         >
-          Add New List
+          Add New Wallet
         </button>
 
-        {/* List of crypto items */}
+        {/* List of crypto wallets */}
         <div className={styles["manageList__list"]}>
-          {items.map((item) => (
+          {wallets.map((wallet) => (
             <div
-              key={item.id}
-              className={`${styles["manageList__list__item"]} ${
-                activeListItem === item.name ? styles.selectedItem : ""
+              key={wallet.id}
+              className={`${styles["manageList__list__wallet"]} ${
+                activeListItem === wallet.name ? styles.selectedItem : ""
               }`}
             >
-              <a>{item.name}</a>
+              <a>{wallet.name}</a>
               <SettingsIcon
                 className={styles.icon}
-                onClick={() => toggleDropdown(item.name)}
+                onClick={() => toggleDropdown(wallet.name)}
               />
-              {dropdownVisible === item.name && (
+              {dropdownVisible === wallet.name && (
                 <div
-                  className={`${styles["manageList__list__item-options"]} ${
-                    dropdownVisible === item.name
-                      ? styles["manageList__list__item-options--show"]
+                  className={`${styles["manageList__list__wallet-options"]} ${
+                    dropdownVisible === wallet.name
+                      ? styles["manageList__list__wallet-options--show"]
                       : ""
                   }`}
                   ref={dropdownRef}
                 >
                   <button
                     onClick={() => {
-                      setListName({ id: item.id, name: item.name });
+                      handleNavigation("/walletView", wallet);
+                      setSelectedWallet!(wallet);
+                    }}
+                  >
+                    Open Wallet
+                  </button>
+                  <button
+                    onClick={() => {
+                      setListName({ id: wallet.id, name: wallet.name });
                       setIsEditing(true);
                       setDropdownVisible(null);
                       setActiveListItem(null);
-                      setModalType("form");
+                      setModalType("editWalletName");
                       setShowModal(true);
                     }}
                   >
                     Edit
                   </button>
-                  <button onClick={() => handleDeleteItem(item.id)}>
+                  <button onClick={() => handleDeleteItem(wallet.id)}>
                     Delete
                   </button>
                 </div>
@@ -138,11 +154,11 @@ const CryptoListsSection: React.FC<CryptoListsSectionProps> = ({
           handleAddItem={handleAddItem}
           isEditing={isEditing}
           setItem={setItem}
-          item={item} 
+          wallet={wallet} 
           modalType={modalType}        /> */}
       </section>
     </>
   );
 };
 
-export default CryptoListsSection;
+export default CryptoWalletList;

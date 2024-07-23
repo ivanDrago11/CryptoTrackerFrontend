@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
-import styles from "./Dashboard.module.scss";
+import styles from "./WalletView.module.scss";
 import CryptoTable from "../../components/CryptoTable/CryptoTable";
 import { useDispatch } from "react-redux";
 import { setPage } from "../../store/headerSlice";
-import CryptoWalletList from "../../components/CryptoWalletList/CryptoWalletList";
-import CryptoTrend from "../../components/CryptoTrends/CryptoTrend";
+import CryptoListsSection from "../../components/CryptoWalletList/CryptoWalletList";
 import {
   Crypto,
   CryptoData1,
@@ -19,10 +18,13 @@ import {
   CryptoData10,
 } from "../../assets/CryptoDataSets"; // Import the data
 import { CustomModal } from "../../components/CustomModal/CustomModal";
+import { useLocation } from "react-router-dom";
 import { Wallet } from "../../store/cryptoWalletSlice";
 
-const Dashboard: React.FC = () => {
+const WalletView: React.FC = () => {
   const dispatch = useDispatch();
+  const location = useLocation();
+  const { wallet } = location.state || {};
   dispatch(setPage("/dashboard"));
 
   const [showModal, setShowModal] = useState(false);
@@ -30,10 +32,10 @@ const Dashboard: React.FC = () => {
   const [modalType, setModalType] = useState("form");
   const [listName, setListName] = useState({ id: 0, name: "" });
   const [selectedCrypto, setSelectedCrypto] = useState<Crypto | null>(null);
-  const [selectedWallet, setSelectedWallet] = useState<Wallet | null>(null);
 
   const [cryptos, setCryptos] = useState<Crypto[]>(CryptoData1);
   const [currentDataSet, setCurrentDataSet] = useState<number>(1);
+  const [selectedWallet, setSelectedWallet] = useState<Wallet | null>(null);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -85,20 +87,25 @@ const Dashboard: React.FC = () => {
     <>
       <main className={styles.main}>
         {/* MANAGE LIST FUNCTIONALITY */}
-        <CryptoWalletList
+        <CryptoListsSection
           setShowModal={setShowModal}
           setModalType={setModalType}
           setIsEditing={setIsEditing}
           setListName={setListName}
           setSelectedWallet={setSelectedWallet}
         />
+
         <section className={styles["main__dashboard"]}>
-          <CryptoTrend cryptos={cryptos} styles={styles} />
+          <div className={styles["main__dashboard__walletName"]}>
+            <h1>{wallet.name}</h1>
+          </div>
           <CryptoTable
+            walletId={wallet.id}
             cryptos={cryptos}
             setShowModal={setShowModal}
             setModalType={setModalType}
             setSelectedCrypto={setSelectedCrypto}
+            setSelectedWallet={setSelectedWallet}
           />
           <CustomModal
             showModal={showModal}
@@ -117,4 +124,4 @@ const Dashboard: React.FC = () => {
   );
 };
 
-export default Dashboard;
+export default WalletView;

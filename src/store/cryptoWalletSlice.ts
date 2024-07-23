@@ -2,27 +2,27 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axiosInstance from "../utils/axiosInstance";
 
-export interface Item {
+export interface Wallet {
   id: number;
   name: string;
   user: number;
   cryptos: number[];
 }
 
-export interface ItemState {
-  items: Item[];
+export interface WalletState {
+  wallets: Wallet[];
   loading: boolean;
   error: string | null;
 }
 
-const initialState: ItemState = {
-  items: [],
+const initialState: WalletState = {
+  wallets: [],
   loading: false,
   error: null,
 };
 
-export const fetchItemsThunk = createAsyncThunk<
-  Item[],
+export const fetchWalletsThunk = createAsyncThunk<
+  Wallet[],
   void,
   { rejectValue: string }
 >("crypyolist/fetchCryptoList", async (_, { rejectWithValue }) => {
@@ -30,13 +30,13 @@ export const fetchItemsThunk = createAsyncThunk<
     const response = await axiosInstance.get("crypto-lists/");
     return response.data;
   } catch (error) {
-    return rejectWithValue("Failed to load items");
+    return rejectWithValue("Failed to load wallets");
   }
 });
 
-export const addItemThunk = createAsyncThunk<
-  Item,
-  Item,
+export const addWalletThunk = createAsyncThunk<
+  Wallet,
+  Wallet,
   { rejectValue: string }
 >("cryptoList/addCryptoList", async ({ name, user, cryptos }, thunkAPI) => {
   try {
@@ -53,9 +53,9 @@ export const addItemThunk = createAsyncThunk<
   }
 });
 
-export const updateItemThunk = createAsyncThunk<
-  Item,
-  Item,
+export const updateWalletThunk = createAsyncThunk<
+  Wallet,
+  Wallet,
   { rejectValue: string }
 >(
   "cryptoList/updateCryptoList",
@@ -75,7 +75,7 @@ export const updateItemThunk = createAsyncThunk<
   }
 );
 
-export const deleteItemThunk = createAsyncThunk<
+export const deleteWalletThunk = createAsyncThunk<
   { id: number },
   { id: number },
   { rejectValue: string }
@@ -90,71 +90,71 @@ export const deleteItemThunk = createAsyncThunk<
   }
 });
 
-const itemsSlice = createSlice({
-  name: "items",
+const walletsSlice = createSlice({
+  name: "wallets",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(fetchItemsThunk.pending, (state) => {
+      .addCase(fetchWalletsThunk.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
-      .addCase(fetchItemsThunk.fulfilled, (state, action) => {
+      .addCase(fetchWalletsThunk.fulfilled, (state, action) => {
         state.loading = false;
-        state.items = action.payload;
+        state.wallets = action.payload;
       })
-      .addCase(fetchItemsThunk.rejected, (state, action) => {
+      .addCase(fetchWalletsThunk.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload as string;
       })
       // Add item
-      .addCase(addItemThunk.pending, (state) => {
+      .addCase(addWalletThunk.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
-      .addCase(addItemThunk.fulfilled, (state, action) => {
+      .addCase(addWalletThunk.fulfilled, (state, action) => {
         state.loading = false;
-        state.items.push(action.payload);
+        state.wallets.push(action.payload);
       })
-      .addCase(addItemThunk.rejected, (state, action) => {
+      .addCase(addWalletThunk.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload as string;
       })
-      .addCase(updateItemThunk.pending, (state) => {
+      .addCase(updateWalletThunk.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
-      .addCase(updateItemThunk.fulfilled, (state, action) => {
+      .addCase(updateWalletThunk.fulfilled, (state, action) => {
         state.loading = false;
-        const index = state.items.findIndex(
+        const index = state.wallets.findIndex(
           (item) => item.id === action.payload.id
         );
         if (index !== -1) {
-          state.items[index] = action.payload;
+          state.wallets[index] = action.payload;
         }
       })
-      .addCase(updateItemThunk.rejected, (state, action) => {
+      .addCase(updateWalletThunk.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload as string;
       })
       // Delete item
-      .addCase(deleteItemThunk.pending, (state) => {
+      .addCase(deleteWalletThunk.pending, (state) => {
         state.loading = true;
         state.error = null;
       })
-      .addCase(deleteItemThunk.fulfilled, (state, action) => {
+      .addCase(deleteWalletThunk.fulfilled, (state, action) => {
         state.loading = false;
-        state.items = state.items.filter(
+        state.wallets = state.wallets.filter(
           (item) => item.id !== action.payload.id
         );
       })
-      .addCase(deleteItemThunk.rejected, (state, action) => {
+      .addCase(deleteWalletThunk.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload as string;
       });
   },
 });
 
-// export const { } = itemsSlice.actions;
-export default itemsSlice.reducer;
+// export const { } = walletsSlice.actions;
+export default walletsSlice.reducer;

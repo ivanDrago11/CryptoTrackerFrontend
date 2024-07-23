@@ -1,5 +1,5 @@
 export interface Crypto {
-  id: string;
+  id: number;
   last_updated: string;
   name: string;
   market_cap: string;
@@ -10,7 +10,7 @@ export interface Crypto {
 
 const CryptoData1: Crypto[] = [
   {
-    id: "bitcoin",
+    id: 1,
     last_updated: new Date().toISOString(),
     name: "Bitcoin",
     market_cap: "544643546354.45",
@@ -19,7 +19,7 @@ const CryptoData1: Crypto[] = [
     symbol: "BTC",
   },
   {
-    id: "ethereum",
+    id: 2,
     last_updated: new Date().toISOString(),
     name: "Ethereum",
     market_cap: "251743621977.67",
@@ -28,7 +28,7 @@ const CryptoData1: Crypto[] = [
     symbol: "ETH",
   },
   {
-    id: "litecoin",
+    id: 3,
     last_updated: new Date().toISOString(),
     name: "Litecoin",
     market_cap: "9374625374.12",
@@ -37,7 +37,7 @@ const CryptoData1: Crypto[] = [
     symbol: "LTC",
   },
   {
-    id: "ripple",
+    id: 4,
     last_updated: new Date().toISOString(),
     name: "Ripple",
     market_cap: "48374652819.55",
@@ -46,7 +46,7 @@ const CryptoData1: Crypto[] = [
     symbol: "XRP",
   },
   {
-    id: "bitcoin-cash",
+    id: 5,
     last_updated: new Date().toISOString(),
     name: "Bitcoin Cash",
     market_cap: "8374652938.75",
@@ -55,7 +55,7 @@ const CryptoData1: Crypto[] = [
     symbol: "BCH",
   },
   {
-    id: "cardano",
+    id: 6,
     last_updated: new Date().toISOString(),
     name: "Cardano",
     market_cap: "52374621893.25",
@@ -64,7 +64,7 @@ const CryptoData1: Crypto[] = [
     symbol: "ADA",
   },
   {
-    id: "polkadot",
+    id: 7,
     last_updated: new Date().toISOString(),
     name: "Polkadot",
     market_cap: "14736219376.45",
@@ -73,7 +73,7 @@ const CryptoData1: Crypto[] = [
     symbol: "DOT",
   },
   {
-    id: "stellar",
+    id: 8,
     last_updated: new Date().toISOString(),
     name: "Stellar",
     market_cap: "6237462184.23",
@@ -82,7 +82,7 @@ const CryptoData1: Crypto[] = [
     symbol: "XLM",
   },
   {
-    id: "chainlink",
+    id: 9,
     last_updated: new Date().toISOString(),
     name: "Chainlink",
     market_cap: "10237462187.23",
@@ -91,7 +91,7 @@ const CryptoData1: Crypto[] = [
     symbol: "LINK",
   },
   {
-    id: "dogecoin",
+    id: 10,
     last_updated: new Date().toISOString(),
     name: "Dogecoin",
     market_cap: "29746321873.12",
@@ -100,7 +100,7 @@ const CryptoData1: Crypto[] = [
     symbol: "DOGE",
   },
   {
-    id: "uniswap",
+    id: 11,
     last_updated: new Date().toISOString(),
     name: "Uniswap",
     market_cap: "7234621973.43",
@@ -109,7 +109,7 @@ const CryptoData1: Crypto[] = [
     symbol: "UNI",
   },
   {
-    id: "aave",
+    id: 12,
     last_updated: new Date().toISOString(),
     name: "Aave",
     market_cap: "6387462913.84",
@@ -118,7 +118,7 @@ const CryptoData1: Crypto[] = [
     symbol: "AAVE",
   },
   {
-    id: "solana",
+    id: 13,
     last_updated: new Date().toISOString(),
     name: "Solana",
     market_cap: "8397462187.45",
@@ -127,7 +127,7 @@ const CryptoData1: Crypto[] = [
     symbol: "SOL",
   },
   {
-    id: "vechain",
+    id: 14,
     last_updated: new Date().toISOString(),
     name: "VeChain",
     market_cap: "7143621983.23",
@@ -136,7 +136,7 @@ const CryptoData1: Crypto[] = [
     symbol: "VET",
   },
   {
-    id: "terra",
+    id: 15,
     last_updated: new Date().toISOString(),
     name: "Terra",
     market_cap: "9137462918.56",
@@ -148,7 +148,7 @@ const CryptoData1: Crypto[] = [
 
 const CryptoData2: Crypto[] = [
   {
-    id: "bitcoin",
+    id: 1,
     last_updated: new Date().toISOString(),
     name: "Bitcoin",
     market_cap: "523846293546.45",
@@ -157,7 +157,7 @@ const CryptoData2: Crypto[] = [
     symbol: "BTC",
   },
   {
-    id: "ethereum",
+    id: 2,
     last_updated: new Date().toISOString(),
     name: "Ethereum",
     market_cap: "247543621977.67",
@@ -166,7 +166,7 @@ const CryptoData2: Crypto[] = [
     symbol: "ETH",
   },
   {
-    id: "litecoin",
+    id: 3,
     last_updated: new Date().toISOString(),
     name: "Litecoin",
     market_cap: "9174625374.12",
@@ -175,7 +175,7 @@ const CryptoData2: Crypto[] = [
     symbol: "LTC",
   },
   {
-    id: "ripple",
+    id: 4,
     last_updated: new Date().toISOString(),
     name: "Ripple",
     market_cap: "47374652819.55",
@@ -184,7 +184,7 @@ const CryptoData2: Crypto[] = [
     symbol: "XRP",
   },
   {
-    id: "bitcoin-cash",
+    id: 5,
     last_updated: new Date().toISOString(),
     name: "Bitcoin Cash",
     market_cap: "8174652938.75",
@@ -193,7 +193,7 @@ const CryptoData2: Crypto[] = [
     symbol: "BCH",
   },
   {
-    id: "cardano",
+    id: 6,
     last_updated: new Date().toISOString(),
     name: "Cardano",
     market_cap: "51374621893.25",
@@ -202,7 +202,7 @@ const CryptoData2: Crypto[] = [
     symbol: "ADA",
   },
   {
-    id: "polkadot",
+    id: 7,
     last_updated: new Date().toISOString(),
     name: "Polkadot",
     market_cap: "14336219376.45",
@@ -211,7 +211,7 @@ const CryptoData2: Crypto[] = [
     symbol: "DOT",
   },
   {
-    id: "stellar",
+    id: 8,
     last_updated: new Date().toISOString(),
     name: "Stellar",
     market_cap: "6137462184.23",
@@ -220,7 +220,7 @@ const CryptoData2: Crypto[] = [
     symbol: "XLM",
   },
   {
-    id: "chainlink",
+    id: 9,
     last_updated: new Date().toISOString(),
     name: "Chainlink",
     market_cap: "99237462187.23",
@@ -229,7 +229,7 @@ const CryptoData2: Crypto[] = [
     symbol: "LINK",
   },
   {
-    id: "dogecoin",
+    id: 10,
     last_updated: new Date().toISOString(),
     name: "Dogecoin",
     market_cap: "28746321873.12",
@@ -238,7 +238,7 @@ const CryptoData2: Crypto[] = [
     symbol: "DOGE",
   },
   {
-    id: "uniswap",
+    id: 11,
     last_updated: new Date().toISOString(),
     name: "Uniswap",
     market_cap: "7034621973.43",
@@ -247,7 +247,7 @@ const CryptoData2: Crypto[] = [
     symbol: "UNI",
   },
   {
-    id: "aave",
+    id: 12,
     last_updated: new Date().toISOString(),
     name: "Aave",
     market_cap: "6187462913.84",
@@ -256,7 +256,7 @@ const CryptoData2: Crypto[] = [
     symbol: "AAVE",
   },
   {
-    id: "solana",
+    id: 13,
     last_updated: new Date().toISOString(),
     name: "Solana",
     market_cap: "8197462187.45",
@@ -265,7 +265,7 @@ const CryptoData2: Crypto[] = [
     symbol: "SOL",
   },
   {
-    id: "vechain",
+    id: 14,
     last_updated: new Date().toISOString(),
     name: "VeChain",
     market_cap: "7043621983.23",
@@ -274,7 +274,7 @@ const CryptoData2: Crypto[] = [
     symbol: "VET",
   },
   {
-    id: "terra",
+    id: 15,
     last_updated: new Date().toISOString(),
     name: "Terra",
     market_cap: "8937462918.56",
@@ -286,7 +286,7 @@ const CryptoData2: Crypto[] = [
 
 const CryptoData3: Crypto[] = [
   {
-    id: "bitcoin",
+    id: 1,
     last_updated: new Date().toISOString(),
     name: "Bitcoin",
     market_cap: "547123546354.45",
@@ -295,7 +295,7 @@ const CryptoData3: Crypto[] = [
     symbol: "BTC",
   },
   {
-    id: "ethereum",
+    id: 2,
     last_updated: new Date().toISOString(),
     name: "Ethereum",
     market_cap: "259743621977.67",
@@ -304,7 +304,7 @@ const CryptoData3: Crypto[] = [
     symbol: "ETH",
   },
   {
-    id: "litecoin",
+    id: 3,
     last_updated: new Date().toISOString(),
     name: "Litecoin",
     market_cap: "9474625374.12",
@@ -313,7 +313,7 @@ const CryptoData3: Crypto[] = [
     symbol: "LTC",
   },
   {
-    id: "ripple",
+    id: 4,
     last_updated: new Date().toISOString(),
     name: "Ripple",
     market_cap: "49374652819.55",
@@ -322,7 +322,7 @@ const CryptoData3: Crypto[] = [
     symbol: "XRP",
   },
   {
-    id: "bitcoin-cash",
+    id: 5,
     last_updated: new Date().toISOString(),
     name: "Bitcoin Cash",
     market_cap: "8474652938.75",
@@ -331,7 +331,7 @@ const CryptoData3: Crypto[] = [
     symbol: "BCH",
   },
   {
-    id: "cardano",
+    id: 6,
     last_updated: new Date().toISOString(),
     name: "Cardano",
     market_cap: "53374621893.25",
@@ -340,7 +340,7 @@ const CryptoData3: Crypto[] = [
     symbol: "ADA",
   },
   {
-    id: "polkadot",
+    id: 7,
     last_updated: new Date().toISOString(),
     name: "Polkadot",
     market_cap: "15336219376.45",
@@ -349,7 +349,7 @@ const CryptoData3: Crypto[] = [
     symbol: "DOT",
   },
   {
-    id: "stellar",
+    id: 8,
     last_updated: new Date().toISOString(),
     name: "Stellar",
     market_cap: "6337462184.23",
@@ -358,7 +358,7 @@ const CryptoData3: Crypto[] = [
     symbol: "XLM",
   },
   {
-    id: "chainlink",
+    id: 9,
     last_updated: new Date().toISOString(),
     name: "Chainlink",
     market_cap: "10337462187.23",
@@ -367,7 +367,7 @@ const CryptoData3: Crypto[] = [
     symbol: "LINK",
   },
   {
-    id: "dogecoin",
+    id: 10,
     last_updated: new Date().toISOString(),
     name: "Dogecoin",
     market_cap: "30746321873.12",
@@ -376,7 +376,7 @@ const CryptoData3: Crypto[] = [
     symbol: "DOGE",
   },
   {
-    id: "uniswap",
+    id: 11,
     last_updated: new Date().toISOString(),
     name: "Uniswap",
     market_cap: "7434621973.43",
@@ -385,7 +385,7 @@ const CryptoData3: Crypto[] = [
     symbol: "UNI",
   },
   {
-    id: "aave",
+    id: 12,
     last_updated: new Date().toISOString(),
     name: "Aave",
     market_cap: "6587462913.84",
@@ -394,7 +394,7 @@ const CryptoData3: Crypto[] = [
     symbol: "AAVE",
   },
   {
-    id: "solana",
+    id: 13,
     last_updated: new Date().toISOString(),
     name: "Solana",
     market_cap: "8497462187.45",
@@ -403,7 +403,7 @@ const CryptoData3: Crypto[] = [
     symbol: "SOL",
   },
   {
-    id: "vechain",
+    id: 14,
     last_updated: new Date().toISOString(),
     name: "VeChain",
     market_cap: "7243621983.23",
@@ -412,7 +412,7 @@ const CryptoData3: Crypto[] = [
     symbol: "VET",
   },
   {
-    id: "terra",
+    id: 15,
     last_updated: new Date().toISOString(),
     name: "Terra",
     market_cap: "9237462918.56",
@@ -424,7 +424,7 @@ const CryptoData3: Crypto[] = [
 
 const CryptoData4: Crypto[] = [
   {
-    id: "bitcoin",
+    id: 1,
     last_updated: new Date().toISOString(),
     name: "Bitcoin",
     market_cap: "552746546354.45",
@@ -433,7 +433,7 @@ const CryptoData4: Crypto[] = [
     symbol: "BTC",
   },
   {
-    id: "ethereum",
+    id: 2,
     last_updated: new Date().toISOString(),
     name: "Ethereum",
     market_cap: "255743621977.67",
@@ -442,7 +442,7 @@ const CryptoData4: Crypto[] = [
     symbol: "ETH",
   },
   {
-    id: "litecoin",
+    id: 3,
     last_updated: new Date().toISOString(),
     name: "Litecoin",
     market_cap: "9474625374.12",
@@ -451,7 +451,7 @@ const CryptoData4: Crypto[] = [
     symbol: "LTC",
   },
   {
-    id: "ripple",
+    id: 4,
     last_updated: new Date().toISOString(),
     name: "Ripple",
     market_cap: "48774652819.55",
@@ -460,7 +460,7 @@ const CryptoData4: Crypto[] = [
     symbol: "XRP",
   },
   {
-    id: "bitcoin-cash",
+    id: 5,
     last_updated: new Date().toISOString(),
     name: "Bitcoin Cash",
     market_cap: "8404652938.75",
@@ -469,7 +469,7 @@ const CryptoData4: Crypto[] = [
     symbol: "BCH",
   },
   {
-    id: "cardano",
+    id: 6,
     last_updated: new Date().toISOString(),
     name: "Cardano",
     market_cap: "52674621893.25",
@@ -478,7 +478,7 @@ const CryptoData4: Crypto[] = [
     symbol: "ADA",
   },
   {
-    id: "polkadot",
+    id: 7,
     last_updated: new Date().toISOString(),
     name: "Polkadot",
     market_cap: "14936219376.45",
@@ -487,7 +487,7 @@ const CryptoData4: Crypto[] = [
     symbol: "DOT",
   },
   {
-    id: "stellar",
+    id: 8,
     last_updated: new Date().toISOString(),
     name: "Stellar",
     market_cap: "6277462184.23",
@@ -496,7 +496,7 @@ const CryptoData4: Crypto[] = [
     symbol: "XLM",
   },
   {
-    id: "chainlink",
+    id: 9,
     last_updated: new Date().toISOString(),
     name: "Chainlink",
     market_cap: "10387462187.23",
@@ -505,7 +505,7 @@ const CryptoData4: Crypto[] = [
     symbol: "LINK",
   },
   {
-    id: "dogecoin",
+    id: 10,
     last_updated: new Date().toISOString(),
     name: "Dogecoin",
     market_cap: "30246321873.12",
@@ -514,7 +514,7 @@ const CryptoData4: Crypto[] = [
     symbol: "DOGE",
   },
   {
-    id: "uniswap",
+    id: 11,
     last_updated: new Date().toISOString(),
     name: "Uniswap",
     market_cap: "7284621973.43",
@@ -523,7 +523,7 @@ const CryptoData4: Crypto[] = [
     symbol: "UNI",
   },
   {
-    id: "aave",
+    id: 12,
     last_updated: new Date().toISOString(),
     name: "Aave",
     market_cap: "6437462913.84",
@@ -532,7 +532,7 @@ const CryptoData4: Crypto[] = [
     symbol: "AAVE",
   },
   {
-    id: "solana",
+    id: 13,
     last_updated: new Date().toISOString(),
     name: "Solana",
     market_cap: "8467462187.45",
@@ -541,7 +541,7 @@ const CryptoData4: Crypto[] = [
     symbol: "SOL",
   },
   {
-    id: "vechain",
+    id: 14,
     last_updated: new Date().toISOString(),
     name: "VeChain",
     market_cap: "7123621983.23",
@@ -550,7 +550,7 @@ const CryptoData4: Crypto[] = [
     symbol: "VET",
   },
   {
-    id: "terra",
+    id: 15,
     last_updated: new Date().toISOString(),
     name: "Terra",
     market_cap: "9187462918.56",
@@ -562,7 +562,7 @@ const CryptoData4: Crypto[] = [
 
 const CryptoData5: Crypto[] = [
   {
-    id: "bitcoin",
+    id: 1,
     last_updated: new Date().toISOString(),
     name: "Bitcoin",
     market_cap: "558743546354.45",
@@ -571,7 +571,7 @@ const CryptoData5: Crypto[] = [
     symbol: "BTC",
   },
   {
-    id: "ethereum",
+    id: 2,
     last_updated: new Date().toISOString(),
     name: "Ethereum",
     market_cap: "259743621977.67",
@@ -580,7 +580,7 @@ const CryptoData5: Crypto[] = [
     symbol: "ETH",
   },
   {
-    id: "litecoin",
+    id: 3,
     last_updated: new Date().toISOString(),
     name: "Litecoin",
     market_cap: "9574625374.12",
@@ -589,7 +589,7 @@ const CryptoData5: Crypto[] = [
     symbol: "LTC",
   },
   {
-    id: "ripple",
+    id: 4,
     last_updated: new Date().toISOString(),
     name: "Ripple",
     market_cap: "49774652819.55",
@@ -598,7 +598,7 @@ const CryptoData5: Crypto[] = [
     symbol: "XRP",
   },
   {
-    id: "bitcoin-cash",
+    id: 5,
     last_updated: new Date().toISOString(),
     name: "Bitcoin Cash",
     market_cap: "8574652938.75",
@@ -607,7 +607,7 @@ const CryptoData5: Crypto[] = [
     symbol: "BCH",
   },
   {
-    id: "cardano",
+    id: 6,
     last_updated: new Date().toISOString(),
     name: "Cardano",
     market_cap: "53674621893.25",
@@ -616,7 +616,7 @@ const CryptoData5: Crypto[] = [
     symbol: "ADA",
   },
   {
-    id: "polkadot",
+    id: 7,
     last_updated: new Date().toISOString(),
     name: "Polkadot",
     market_cap: "15336219376.45",
@@ -625,7 +625,7 @@ const CryptoData5: Crypto[] = [
     symbol: "DOT",
   },
   {
-    id: "stellar",
+    id: 8,
     last_updated: new Date().toISOString(),
     name: "Stellar",
     market_cap: "6377462184.23",
@@ -634,7 +634,7 @@ const CryptoData5: Crypto[] = [
     symbol: "XLM",
   },
   {
-    id: "chainlink",
+    id: 9,
     last_updated: new Date().toISOString(),
     name: "Chainlink",
     market_cap: "10737462187.23",
@@ -643,7 +643,7 @@ const CryptoData5: Crypto[] = [
     symbol: "LINK",
   },
   {
-    id: "dogecoin",
+    id: 10,
     last_updated: new Date().toISOString(),
     name: "Dogecoin",
     market_cap: "31746321873.12",
@@ -652,7 +652,7 @@ const CryptoData5: Crypto[] = [
     symbol: "DOGE",
   },
   {
-    id: "uniswap",
+    id: 11,
     last_updated: new Date().toISOString(),
     name: "Uniswap",
     market_cap: "7634621973.43",
@@ -661,7 +661,7 @@ const CryptoData5: Crypto[] = [
     symbol: "UNI",
   },
   {
-    id: "aave",
+    id: 12,
     last_updated: new Date().toISOString(),
     name: "Aave",
     market_cap: "6787462913.84",
@@ -670,7 +670,7 @@ const CryptoData5: Crypto[] = [
     symbol: "AAVE",
   },
   {
-    id: "solana",
+    id: 13,
     last_updated: new Date().toISOString(),
     name: "Solana",
     market_cap: "8577462187.45",
@@ -679,7 +679,7 @@ const CryptoData5: Crypto[] = [
     symbol: "SOL",
   },
   {
-    id: "vechain",
+    id: 14,
     last_updated: new Date().toISOString(),
     name: "VeChain",
     market_cap: "7343621983.23",
@@ -688,7 +688,7 @@ const CryptoData5: Crypto[] = [
     symbol: "VET",
   },
   {
-    id: "terra",
+    id: 15,
     last_updated: new Date().toISOString(),
     name: "Terra",
     market_cap: "9537462918.56",
@@ -700,7 +700,7 @@ const CryptoData5: Crypto[] = [
 
 const CryptoData6: Crypto[] = [
   {
-    id: "bitcoin",
+    id: 1,
     last_updated: new Date().toISOString(),
     name: "Bitcoin",
     market_cap: "564743546354.45",
@@ -709,7 +709,7 @@ const CryptoData6: Crypto[] = [
     symbol: "BTC",
   },
   {
-    id: "ethereum",
+    id: 2,
     last_updated: new Date().toISOString(),
     name: "Ethereum",
     market_cap: "263743621977.67",
@@ -718,7 +718,7 @@ const CryptoData6: Crypto[] = [
     symbol: "ETH",
   },
   {
-    id: "litecoin",
+    id: 3,
     last_updated: new Date().toISOString(),
     name: "Litecoin",
     market_cap: "9674625374.12",
@@ -727,7 +727,7 @@ const CryptoData6: Crypto[] = [
     symbol: "LTC",
   },
   {
-    id: "ripple",
+    id: 4,
     last_updated: new Date().toISOString(),
     name: "Ripple",
     market_cap: "50774652819.55",
@@ -736,7 +736,7 @@ const CryptoData6: Crypto[] = [
     symbol: "XRP",
   },
   {
-    id: "bitcoin-cash",
+    id: 5,
     last_updated: new Date().toISOString(),
     name: "Bitcoin Cash",
     market_cap: "8674652938.75",
@@ -745,7 +745,7 @@ const CryptoData6: Crypto[] = [
     symbol: "BCH",
   },
   {
-    id: "cardano",
+    id: 6,
     last_updated: new Date().toISOString(),
     name: "Cardano",
     market_cap: "54674621893.25",
@@ -754,7 +754,7 @@ const CryptoData6: Crypto[] = [
     symbol: "ADA",
   },
   {
-    id: "polkadot",
+    id: 7,
     last_updated: new Date().toISOString(),
     name: "Polkadot",
     market_cap: "16336219376.45",
@@ -763,7 +763,7 @@ const CryptoData6: Crypto[] = [
     symbol: "DOT",
   },
   {
-    id: "stellar",
+    id: 8,
     last_updated: new Date().toISOString(),
     name: "Stellar",
     market_cap: "6477462184.23",
@@ -772,7 +772,7 @@ const CryptoData6: Crypto[] = [
     symbol: "XLM",
   },
   {
-    id: "chainlink",
+    id: 9,
     last_updated: new Date().toISOString(),
     name: "Chainlink",
     market_cap: "10937462187.23",
@@ -781,7 +781,7 @@ const CryptoData6: Crypto[] = [
     symbol: "LINK",
   },
   {
-    id: "dogecoin",
+    id: 10,
     last_updated: new Date().toISOString(),
     name: "Dogecoin",
     market_cap: "32746321873.12",
@@ -790,7 +790,7 @@ const CryptoData6: Crypto[] = [
     symbol: "DOGE",
   },
   {
-    id: "uniswap",
+    id: 11,
     last_updated: new Date().toISOString(),
     name: "Uniswap",
     market_cap: "7834621973.43",
@@ -799,7 +799,7 @@ const CryptoData6: Crypto[] = [
     symbol: "UNI",
   },
   {
-    id: "aave",
+    id: 12,
     last_updated: new Date().toISOString(),
     name: "Aave",
     market_cap: "6987462913.84",
@@ -808,7 +808,7 @@ const CryptoData6: Crypto[] = [
     symbol: "AAVE",
   },
   {
-    id: "solana",
+    id: 13,
     last_updated: new Date().toISOString(),
     name: "Solana",
     market_cap: "8777462187.45",
@@ -817,7 +817,7 @@ const CryptoData6: Crypto[] = [
     symbol: "SOL",
   },
   {
-    id: "vechain",
+    id: 14,
     last_updated: new Date().toISOString(),
     name: "VeChain",
     market_cap: "7443621983.23",
@@ -826,7 +826,7 @@ const CryptoData6: Crypto[] = [
     symbol: "VET",
   },
   {
-    id: "terra",
+    id: 15,
     last_updated: new Date().toISOString(),
     name: "Terra",
     market_cap: "9737462918.56",
@@ -838,7 +838,7 @@ const CryptoData6: Crypto[] = [
 
 const CryptoData7: Crypto[] = [
   {
-    id: "bitcoin",
+    id: 1,
     last_updated: new Date().toISOString(),
     name: "Bitcoin",
     market_cap: "574743546354.45",
@@ -847,7 +847,7 @@ const CryptoData7: Crypto[] = [
     symbol: "BTC",
   },
   {
-    id: "ethereum",
+    id: 2,
     last_updated: new Date().toISOString(),
     name: "Ethereum",
     market_cap: "273743621977.67",
@@ -856,7 +856,7 @@ const CryptoData7: Crypto[] = [
     symbol: "ETH",
   },
   {
-    id: "litecoin",
+    id: 3,
     last_updated: new Date().toISOString(),
     name: "Litecoin",
     market_cap: "9774625374.12",
@@ -865,7 +865,7 @@ const CryptoData7: Crypto[] = [
     symbol: "LTC",
   },
   {
-    id: "ripple",
+    id: 4,
     last_updated: new Date().toISOString(),
     name: "Ripple",
     market_cap: "51774652819.55",
@@ -874,7 +874,7 @@ const CryptoData7: Crypto[] = [
     symbol: "XRP",
   },
   {
-    id: "bitcoin-cash",
+    id: 5,
     last_updated: new Date().toISOString(),
     name: "Bitcoin Cash",
     market_cap: "8774652938.75",
@@ -883,7 +883,7 @@ const CryptoData7: Crypto[] = [
     symbol: "BCH",
   },
   {
-    id: "cardano",
+    id: 6,
     last_updated: new Date().toISOString(),
     name: "Cardano",
     market_cap: "55674621893.25",
@@ -892,7 +892,7 @@ const CryptoData7: Crypto[] = [
     symbol: "ADA",
   },
   {
-    id: "polkadot",
+    id: 7,
     last_updated: new Date().toISOString(),
     name: "Polkadot",
     market_cap: "18336219376.45",
@@ -901,7 +901,7 @@ const CryptoData7: Crypto[] = [
     symbol: "DOT",
   },
   {
-    id: "stellar",
+    id: 8,
     last_updated: new Date().toISOString(),
     name: "Stellar",
     market_cap: "6577462184.23",
@@ -910,7 +910,7 @@ const CryptoData7: Crypto[] = [
     symbol: "XLM",
   },
   {
-    id: "chainlink",
+    id: 9,
     last_updated: new Date().toISOString(),
     name: "Chainlink",
     market_cap: "11937462187.23",
@@ -919,7 +919,7 @@ const CryptoData7: Crypto[] = [
     symbol: "LINK",
   },
   {
-    id: "dogecoin",
+    id: 10,
     last_updated: new Date().toISOString(),
     name: "Dogecoin",
     market_cap: "33746321873.12",
@@ -928,7 +928,7 @@ const CryptoData7: Crypto[] = [
     symbol: "DOGE",
   },
   {
-    id: "uniswap",
+    id: 11,
     last_updated: new Date().toISOString(),
     name: "Uniswap",
     market_cap: "8034621973.43",
@@ -937,7 +937,7 @@ const CryptoData7: Crypto[] = [
     symbol: "UNI",
   },
   {
-    id: "aave",
+    id: 12,
     last_updated: new Date().toISOString(),
     name: "Aave",
     market_cap: "7187462913.84",
@@ -946,7 +946,7 @@ const CryptoData7: Crypto[] = [
     symbol: "AAVE",
   },
   {
-    id: "solana",
+    id: 13,
     last_updated: new Date().toISOString(),
     name: "Solana",
     market_cap: "8977462187.45",
@@ -955,7 +955,7 @@ const CryptoData7: Crypto[] = [
     symbol: "SOL",
   },
   {
-    id: "vechain",
+    id: 14,
     last_updated: new Date().toISOString(),
     name: "VeChain",
     market_cap: "7643621983.23",
@@ -964,7 +964,7 @@ const CryptoData7: Crypto[] = [
     symbol: "VET",
   },
   {
-    id: "terra",
+    id: 15,
     last_updated: new Date().toISOString(),
     name: "Terra",
     market_cap: "9937462918.56",
@@ -976,7 +976,7 @@ const CryptoData7: Crypto[] = [
 
 const CryptoData8: Crypto[] = [
   {
-    id: "bitcoin",
+    id: 1,
     last_updated: new Date().toISOString(),
     name: "Bitcoin",
     market_cap: "584743546354.45",
@@ -985,7 +985,7 @@ const CryptoData8: Crypto[] = [
     symbol: "BTC",
   },
   {
-    id: "ethereum",
+    id: 2,
     last_updated: new Date().toISOString(),
     name: "Ethereum",
     market_cap: "283743621977.67",
@@ -994,7 +994,7 @@ const CryptoData8: Crypto[] = [
     symbol: "ETH",
   },
   {
-    id: "litecoin",
+    id: 3,
     last_updated: new Date().toISOString(),
     name: "Litecoin",
     market_cap: "9874625374.12",
@@ -1003,7 +1003,7 @@ const CryptoData8: Crypto[] = [
     symbol: "LTC",
   },
   {
-    id: "ripple",
+    id: 4,
     last_updated: new Date().toISOString(),
     name: "Ripple",
     market_cap: "52774652819.55",
@@ -1012,7 +1012,7 @@ const CryptoData8: Crypto[] = [
     symbol: "XRP",
   },
   {
-    id: "bitcoin-cash",
+    id: 5,
     last_updated: new Date().toISOString(),
     name: "Bitcoin Cash",
     market_cap: "8874652938.75",
@@ -1021,7 +1021,7 @@ const CryptoData8: Crypto[] = [
     symbol: "BCH",
   },
   {
-    id: "cardano",
+    id: 6,
     last_updated: new Date().toISOString(),
     name: "Cardano",
     market_cap: "56674621893.25",
@@ -1030,7 +1030,7 @@ const CryptoData8: Crypto[] = [
     symbol: "ADA",
   },
   {
-    id: "polkadot",
+    id: 7,
     last_updated: new Date().toISOString(),
     name: "Polkadot",
     market_cap: "19336219376.45",
@@ -1039,7 +1039,7 @@ const CryptoData8: Crypto[] = [
     symbol: "DOT",
   },
   {
-    id: "stellar",
+    id: 8,
     last_updated: new Date().toISOString(),
     name: "Stellar",
     market_cap: "6777462184.23",
@@ -1048,7 +1048,7 @@ const CryptoData8: Crypto[] = [
     symbol: "XLM",
   },
   {
-    id: "chainlink",
+    id: 9,
     last_updated: new Date().toISOString(),
     name: "Chainlink",
     market_cap: "12937462187.23",
@@ -1057,7 +1057,7 @@ const CryptoData8: Crypto[] = [
     symbol: "LINK",
   },
   {
-    id: "dogecoin",
+    id: 10,
     last_updated: new Date().toISOString(),
     name: "Dogecoin",
     market_cap: "34746321873.12",
@@ -1066,7 +1066,7 @@ const CryptoData8: Crypto[] = [
     symbol: "DOGE",
   },
   {
-    id: "uniswap",
+    id: 11,
     last_updated: new Date().toISOString(),
     name: "Uniswap",
     market_cap: "8234621973.43",
@@ -1075,7 +1075,7 @@ const CryptoData8: Crypto[] = [
     symbol: "UNI",
   },
   {
-    id: "aave",
+    id: 12,
     last_updated: new Date().toISOString(),
     name: "Aave",
     market_cap: "7387462913.84",
@@ -1084,7 +1084,7 @@ const CryptoData8: Crypto[] = [
     symbol: "AAVE",
   },
   {
-    id: "solana",
+    id: 13,
     last_updated: new Date().toISOString(),
     name: "Solana",
     market_cap: "9177462187.45",
@@ -1093,7 +1093,7 @@ const CryptoData8: Crypto[] = [
     symbol: "SOL",
   },
   {
-    id: "vechain",
+    id: 14,
     last_updated: new Date().toISOString(),
     name: "VeChain",
     market_cap: "7843621983.23",
@@ -1102,7 +1102,7 @@ const CryptoData8: Crypto[] = [
     symbol: "VET",
   },
   {
-    id: "terra",
+    id: 15,
     last_updated: new Date().toISOString(),
     name: "Terra",
     market_cap: "10137462918.56",
@@ -1114,7 +1114,7 @@ const CryptoData8: Crypto[] = [
 
 const CryptoData9: Crypto[] = [
   {
-    id: "bitcoin",
+    id: 1,
     last_updated: new Date().toISOString(),
     name: "Bitcoin",
     market_cap: "594743546354.45",
@@ -1123,7 +1123,7 @@ const CryptoData9: Crypto[] = [
     symbol: "BTC",
   },
   {
-    id: "ethereum",
+    id: 2,
     last_updated: new Date().toISOString(),
     name: "Ethereum",
     market_cap: "293743621977.67",
@@ -1132,7 +1132,7 @@ const CryptoData9: Crypto[] = [
     symbol: "ETH",
   },
   {
-    id: "litecoin",
+    id: 3,
     last_updated: new Date().toISOString(),
     name: "Litecoin",
     market_cap: "9974625374.12",
@@ -1141,7 +1141,7 @@ const CryptoData9: Crypto[] = [
     symbol: "LTC",
   },
   {
-    id: "ripple",
+    id: 4,
     last_updated: new Date().toISOString(),
     name: "Ripple",
     market_cap: "53774652819.55",
@@ -1150,7 +1150,7 @@ const CryptoData9: Crypto[] = [
     symbol: "XRP",
   },
   {
-    id: "bitcoin-cash",
+    id: 5,
     last_updated: new Date().toISOString(),
     name: "Bitcoin Cash",
     market_cap: "8974652938.75",
@@ -1159,7 +1159,7 @@ const CryptoData9: Crypto[] = [
     symbol: "BCH",
   },
   {
-    id: "cardano",
+    id: 6,
     last_updated: new Date().toISOString(),
     name: "Cardano",
     market_cap: "57674621893.25",
@@ -1168,7 +1168,7 @@ const CryptoData9: Crypto[] = [
     symbol: "ADA",
   },
   {
-    id: "polkadot",
+    id: 7,
     last_updated: new Date().toISOString(),
     name: "Polkadot",
     market_cap: "20336219376.45",
@@ -1177,7 +1177,7 @@ const CryptoData9: Crypto[] = [
     symbol: "DOT",
   },
   {
-    id: "stellar",
+    id: 8,
     last_updated: new Date().toISOString(),
     name: "Stellar",
     market_cap: "6977462184.23",
@@ -1186,7 +1186,7 @@ const CryptoData9: Crypto[] = [
     symbol: "XLM",
   },
   {
-    id: "chainlink",
+    id: 9,
     last_updated: new Date().toISOString(),
     name: "Chainlink",
     market_cap: "13937462187.23",
@@ -1195,7 +1195,7 @@ const CryptoData9: Crypto[] = [
     symbol: "LINK",
   },
   {
-    id: "dogecoin",
+    id: 10,
     last_updated: new Date().toISOString(),
     name: "Dogecoin",
     market_cap: "35746321873.12",
@@ -1204,7 +1204,7 @@ const CryptoData9: Crypto[] = [
     symbol: "DOGE",
   },
   {
-    id: "uniswap",
+    id: 11,
     last_updated: new Date().toISOString(),
     name: "Uniswap",
     market_cap: "8434621973.43",
@@ -1213,7 +1213,7 @@ const CryptoData9: Crypto[] = [
     symbol: "UNI",
   },
   {
-    id: "aave",
+    id: 12,
     last_updated: new Date().toISOString(),
     name: "Aave",
     market_cap: "7587462913.84",
@@ -1222,7 +1222,7 @@ const CryptoData9: Crypto[] = [
     symbol: "AAVE",
   },
   {
-    id: "solana",
+    id: 13,
     last_updated: new Date().toISOString(),
     name: "Solana",
     market_cap: "9377462187.45",
@@ -1231,7 +1231,7 @@ const CryptoData9: Crypto[] = [
     symbol: "SOL",
   },
   {
-    id: "vechain",
+    id: 14,
     last_updated: new Date().toISOString(),
     name: "VeChain",
     market_cap: "8043621983.23",
@@ -1240,7 +1240,7 @@ const CryptoData9: Crypto[] = [
     symbol: "VET",
   },
   {
-    id: "terra",
+    id: 15,
     last_updated: new Date().toISOString(),
     name: "Terra",
     market_cap: "10337462918.56",
@@ -1252,7 +1252,7 @@ const CryptoData9: Crypto[] = [
 
 const CryptoData10: Crypto[] = [
   {
-    id: "bitcoin",
+    id: 1,
     last_updated: new Date().toISOString(),
     name: "Bitcoin",
     market_cap: "604743546354.45",
@@ -1261,7 +1261,7 @@ const CryptoData10: Crypto[] = [
     symbol: "BTC",
   },
   {
-    id: "ethereum",
+    id: 2,
     last_updated: new Date().toISOString(),
     name: "Ethereum",
     market_cap: "303743621977.67",
@@ -1270,7 +1270,7 @@ const CryptoData10: Crypto[] = [
     symbol: "ETH",
   },
   {
-    id: "litecoin",
+    id: 3,
     last_updated: new Date().toISOString(),
     name: "Litecoin",
     market_cap: "10074625374.12",
@@ -1279,7 +1279,7 @@ const CryptoData10: Crypto[] = [
     symbol: "LTC",
   },
   {
-    id: "ripple",
+    id: 4,
     last_updated: new Date().toISOString(),
     name: "Ripple",
     market_cap: "54774652819.55",
@@ -1288,7 +1288,7 @@ const CryptoData10: Crypto[] = [
     symbol: "XRP",
   },
   {
-    id: "bitcoin-cash",
+    id: 5,
     last_updated: new Date().toISOString(),
     name: "Bitcoin Cash",
     market_cap: "9074652938.75",
@@ -1297,7 +1297,7 @@ const CryptoData10: Crypto[] = [
     symbol: "BCH",
   },
   {
-    id: "cardano",
+    id: 6,
     last_updated: new Date().toISOString(),
     name: "Cardano",
     market_cap: "58674621893.25",
@@ -1306,7 +1306,7 @@ const CryptoData10: Crypto[] = [
     symbol: "ADA",
   },
   {
-    id: "polkadot",
+    id: 7,
     last_updated: new Date().toISOString(),
     name: "Polkadot",
     market_cap: "21336219376.45",
@@ -1315,7 +1315,7 @@ const CryptoData10: Crypto[] = [
     symbol: "DOT",
   },
   {
-    id: "stellar",
+    id: 8,
     last_updated: new Date().toISOString(),
     name: "Stellar",
     market_cap: "7177462184.23",
@@ -1324,7 +1324,7 @@ const CryptoData10: Crypto[] = [
     symbol: "XLM",
   },
   {
-    id: "chainlink",
+    id: 9,
     last_updated: new Date().toISOString(),
     name: "Chainlink",
     market_cap: "14937462187.23",
@@ -1333,7 +1333,7 @@ const CryptoData10: Crypto[] = [
     symbol: "LINK",
   },
   {
-    id: "dogecoin",
+    id: 10,
     last_updated: new Date().toISOString(),
     name: "Dogecoin",
     market_cap: "36746321873.12",
@@ -1342,7 +1342,7 @@ const CryptoData10: Crypto[] = [
     symbol: "DOGE",
   },
   {
-    id: "uniswap",
+    id: 11,
     last_updated: new Date().toISOString(),
     name: "Uniswap",
     market_cap: "8634621973.43",
@@ -1351,7 +1351,7 @@ const CryptoData10: Crypto[] = [
     symbol: "UNI",
   },
   {
-    id: "aave",
+    id: 12,
     last_updated: new Date().toISOString(),
     name: "Aave",
     market_cap: "7787462913.84",
@@ -1360,7 +1360,7 @@ const CryptoData10: Crypto[] = [
     symbol: "AAVE",
   },
   {
-    id: "solana",
+    id: 13,
     last_updated: new Date().toISOString(),
     name: "Solana",
     market_cap: "9577462187.45",
@@ -1369,7 +1369,7 @@ const CryptoData10: Crypto[] = [
     symbol: "SOL",
   },
   {
-    id: "vechain",
+    id: 14,
     last_updated: new Date().toISOString(),
     name: "VeChain",
     market_cap: "8243621983.23",
@@ -1378,7 +1378,7 @@ const CryptoData10: Crypto[] = [
     symbol: "VET",
   },
   {
-    id: "terra",
+    id: 15,
     last_updated: new Date().toISOString(),
     name: "Terra",
     market_cap: "10537462918.56",

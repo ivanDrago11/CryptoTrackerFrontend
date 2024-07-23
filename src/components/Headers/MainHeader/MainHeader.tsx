@@ -5,12 +5,14 @@ import cryptoLogo from "../../../assets/images/CryptoLogo.png";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store";
 import HeaderItems from "../HeaderItems";
+import { useNavigate } from "react-router-dom";
 
 const MainHeader: React.FC = () => {
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
   // const navigate = useNavigate();
 
   const page = useSelector((state: RootState) => state.header.page);
+  const navigate = useNavigate();
 
   const toggleMenu = () => {
     setIsSideBarOpen(!isSideBarOpen);
@@ -18,7 +20,10 @@ const MainHeader: React.FC = () => {
 
   return (
     <header className={styles.header}>
-      <div className={styles["header__logo"]}>
+      <div
+        className={styles["header__logo"]}
+        onClick={() => navigate("/dashboard")}
+      >
         <img
           className={styles["header__logo-image"]}
           src={cryptoLogo}

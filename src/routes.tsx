@@ -9,7 +9,7 @@ import Dashboard from "./pages/Dashboard/Dashboard";
 import Footer from "./components/Footer/Footer";
 // import Headers from "./components/Headers/Headers";
 import CurrencieDetails from "./pages/CurrencieDetails/CurrencieDetails";
-import ListView from "./pages/ListView/ListView";
+import WalletView from "./pages/WalletView/WalletView";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import MainHeader from "./components/Headers/MainHeader/MainHeader";
 
@@ -23,7 +23,7 @@ const AppRoutes = () => {
           <Route path="/" element={<LandingPage />} />
           <Route path="/loginPage" element={<LoginPage />} />
           <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/listView" element={<ListView />} />
+          <Route path="/walletView" element={<WalletView />} />
           <Route path="/currencieDetails" element={<CurrencieDetails />} />
         </Routes>
       </main>

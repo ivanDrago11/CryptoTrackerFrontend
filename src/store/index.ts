@@ -1,13 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import headerReducer from "./headerSlice";
-import itemsReducer from "./cryptoListSlice";
+import walletsReducer from "./cryptoWalletSlice";
 import authReducer from "./authSlice";
 import cryptoReducer from "./dashboardSlice";
 
 const store = configureStore({
   reducer: {
     header: headerReducer,
-    items: itemsReducer,
+    wallets: walletsReducer,
     auth: authReducer,
     cryptos: cryptoReducer,
   },

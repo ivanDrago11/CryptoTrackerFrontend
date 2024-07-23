@@ -5,7 +5,7 @@ import "./App.css";
 import AppRoutes from "./routes";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 import { RootState } from "./store";
-import { fetchItemsThunk } from "./store/cryptoListSlice";
+import { fetchWalletsThunk } from "./store/cryptoWalletSlice";
 import { useEffect } from "react";
 import { fetchCryptosThunk } from "./store/dashboardSlice";
 
@@ -14,7 +14,7 @@ const App: React.FC = () => {
 
   useEffect(() => {
     const fetchCryptoLists = async () => {
-      const response = await dispatch(fetchItemsThunk());
+      const response = await dispatch(fetchWalletsThunk());
       console.log(response);
     };
     fetchCryptoLists();
