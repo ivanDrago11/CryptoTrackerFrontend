@@ -17,15 +17,32 @@
     }
   }
 
+  &--expanded--responsive {
+    grid-template-columns: 1fr;
+  }
+
   &__leftSideBar {
     overflow: hidden;
-    // transform: translateX(-95%);
-    // flex: 0 0 1px;
-    // display: none;
-    // width: 30%;
-    // min-width: 350px;
     border-right: 1px solid rgba(255, 255, 255, 0.106);
     transition: transform 0.45s ease-in-out;
+  }
+
+  &__leftSideBar--responsive {
+    position: absolute;
+    background-color: gray;
+    width: 80%;
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.632);
+    backdrop-filter: blur(5px);
+    z-index: 9999;
+    // backdrop-filter: blur(10px);
+
+    transform: translateX(-96%);
+    // transform: translateX(-90%);
+  }
+
+  &__leftSideBar--responsive-open {
+    transform: translateX(0);
   }
 
   &__dashboard {

@@ -42,7 +42,10 @@ const CryptoWalletList: React.FC<CryptoWalletListProps> = ({
   // Refs and state
   const dropdownRef = useRef<HTMLDivElement | null>(null);
   // const [showModal, setShowModal] = useState(false);
-
+  const [windowDimensions, setWindowDimensions] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
   // states
   const navigate = useNavigate();
   const [dropdownVisible, setDropdownVisible] = useState<string | null>(null);
@@ -54,6 +57,17 @@ const CryptoWalletList: React.FC<CryptoWalletListProps> = ({
     setActiveListItem(activeListItem === id ? null : id);
   };
 
+  useEffect(() => {
+    function handleResize() {
+      setWindowDimensions({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    }
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   // Handle clicks outside the dropdown to close it
   const handleClickOutside = (event: MouseEvent) => {
     if (
@@ -95,6 +109,8 @@ const CryptoWalletList: React.FC<CryptoWalletListProps> = ({
           onClick={() => {
             setListName({ id: -1, name: "" });
             setIsEditing(false);
+            windowDimensions.width < 1040 &&
+              setIsSideBarVisible!(!isSideBarVisible);
             setShowModal(true);
             setModalType("addNewWallet");
           }}
@@ -112,6 +128,8 @@ const CryptoWalletList: React.FC<CryptoWalletListProps> = ({
                   activeListItem === wallet.name ? styles.selectedItem : ""
                 }`}
                 onClick={() => {
+                  windowDimensions.width < 1040 &&
+                    setIsSideBarVisible!(!isSideBarVisible);
                   handleNavigation("/walletView", wallet);
                   setSelectedWallet!(wallet);
                 }}

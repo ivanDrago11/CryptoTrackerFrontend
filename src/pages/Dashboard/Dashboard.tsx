@@ -26,7 +26,7 @@ const Dashboard: React.FC = () => {
   dispatch(setPage("/dashboard"));
 
   const [showModal, setShowModal] = useState(false);
-  const [isSideBarVisible, setIsSideBarVisible] = useState(false);
+  const [isSideBarVisible, setIsSideBarVisible] = useState(true);
   const [isEditing, setIsEditing] = useState(false);
   const [modalType, setModalType] = useState("form");
   const [listName, setListName] = useState({ id: 0, name: "" });
@@ -36,6 +36,22 @@ const Dashboard: React.FC = () => {
   const [cryptos, setCryptos] = useState<Crypto[]>(CryptoData1);
   const [currentDataSet, setCurrentDataSet] = useState<number>(1);
 
+  const [windowDimensions, setWindowDimensions] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowDimensions({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    }
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   useEffect(() => {
     const interval = setInterval(() => {
       // Cycle through the datasets
@@ -86,13 +102,29 @@ const Dashboard: React.FC = () => {
     <>
       <main
         className={`${styles.main}
-            ${isSideBarVisible ? styles["main--expanded"] : ""}`}
+            ${
+              isSideBarVisible && windowDimensions.width > 1040
+                ? styles["main--expanded"]
+                : ""
+            }
+            ${
+              windowDimensions.width < 1040
+                ? styles["main--expanded--responsive"]
+                : ""
+            }`}
       >
         {/* MANAGE LIST FUNCTIONALITY */}
         <section
           className={`${styles["main__leftSideBar"]}
-          ${isSideBarVisible ? styles["main__leftSideBar-hidden"] : ""}
-            ${isSideBarVisible ? styles["main--expanded"] : ""}`}
+            ${
+              windowDimensions.width < 1040
+                ? styles["main__leftSideBar--responsive"]
+                : ""
+            } ${
+            windowDimensions.width < 1040 && !isSideBarVisible
+              ? styles["main__leftSideBar--responsive-open"]
+              : ""
+          }`}
         >
           <CryptoWalletList
             isSideBarVisible={isSideBarVisible}
