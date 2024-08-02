@@ -28,6 +28,7 @@ export const fetchWalletsThunk = createAsyncThunk<
 >("crypyolist/fetchCryptoList", async (_, { rejectWithValue }) => {
   try {
     const response = await axiosInstance.get("crypto-lists/");
+    console.log(response.data);
     return response.data;
   } catch (error) {
     return rejectWithValue("Failed to load wallets");

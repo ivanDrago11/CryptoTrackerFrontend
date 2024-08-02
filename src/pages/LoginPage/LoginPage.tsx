@@ -1,37 +1,67 @@
 import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { loginUserThunk, registerUserThunk } from "../../store/authSlice";
+import {
+  fetchUserIdThunk,
+  loginUserThunk,
+  registerUserThunk,
+} from "../../store/authSlice";
 import { useDispatch } from "react-redux";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 import styles from "./LoginPage.module.scss";
 import { RootState } from "../../store";
+import { setPage } from "../../store/headerSlice";
+import { CustomModal } from "../../components/CustomModal/CustomModal";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 
 const LoginPage: React.FC = () => {
+  const dispatch = useDispatch<ThunkDispatch<RootState, unknown, AnyAction>>();
+  dispatch(setPage("/loginPage"));
   const location = useLocation();
-  const { value } = location.state || {};
-  const [isLogin, setLogin] = useState(value);
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  let { value } = location.state || {};
+  value = value ?? true;
+  const [isLogin, setLogin] = useState<boolean>(value);
   const [error, setError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [modalMessage, setModalMessage] = useState("");
+  const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
 
-  const dispatch = useDispatch<ThunkDispatch<RootState, unknown, AnyAction>>();
+  interface User {
+    username: string;
+    email: string;
+    password: string;
+    confirmPassword: string;
+  }
+
+  const [userInfo, setUserInfo] = useState<User>({
+    username: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+
+  const [isConfirmPasswordVisible, setIsConfirmPasswordVisible] =
+    useState<boolean>(false);
+  const modalType = "confirmationMessage";
   const navigate = useNavigate();
-
-  // const { loginUser, registerUser } = authContext;
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
+    const { username, password, email, confirmPassword } = userInfo;
     if (isLogin) {
       const response = await dispatch(loginUserThunk({ username, password }));
+      const log = await dispatch(fetchUserIdThunk({ username }));
       if (response.type === "auth/loginUser/fulfilled") {
-        console.log("ok");
         navigate("/dashboard");
+        setUserInfo({
+          username: "",
+          email: "",
+          password: "",
+          confirmPassword: "",
+        });
         setError(false);
-        console.log(typeof response.type);
+        console.log(log);
       } else {
         setError(true);
       }
@@ -41,11 +71,19 @@ const LoginPage: React.FC = () => {
           registerUserThunk({ username, email, password })
         );
         if (response.type === "auth/registerUser/fulfilled") {
-          console.log(response);
+          setModalMessage("The user was created succesfully");
+          setShowModal(true);
           setPasswordError(false);
-          alert("User registered successfully");
+          setIsPasswordVisible(false);
+          setUserInfo({
+            username: "",
+            email: "",
+            password: "",
+            confirmPassword: "",
+          });
         } else {
-          alert("Incorrect User");
+          setModalMessage("The user already exists");
+          setShowModal(true);
         }
       } else {
         setPasswordError(true);
@@ -69,8 +107,10 @@ const LoginPage: React.FC = () => {
             </label>
             <input
               type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              value={userInfo.username}
+              onChange={(e) =>
+                setUserInfo({ ...userInfo, username: e.target.value })
+              }
               placeholder={
                 isLogin ? "Enter your username or email" : "username"
               }
@@ -86,8 +126,10 @@ const LoginPage: React.FC = () => {
                 <label htmlFor="">Email</label>
                 <input
                   type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  value={userInfo.email}
+                  onChange={(e) =>
+                    setUserInfo({ ...userInfo, email: e.target.value })
+                  }
                   placeholder="email@mail.com"
                   autoComplete="email"
                   required
@@ -95,16 +137,31 @@ const LoginPage: React.FC = () => {
               </>
             )}
             <label htmlFor="">Password</label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Enter your Password"
-              autoComplete="current-password"
-              minLength={8}
-              maxLength={30}
-              required
-            />
+            <div className={styles["main__form-box__passwordField"]}>
+              <input
+                type={isPasswordVisible ? "text" : "password"}
+                value={userInfo.password}
+                onChange={(e) =>
+                  setUserInfo({ ...userInfo, password: e.target.value })
+                }
+                placeholder="Enter your Password"
+                autoComplete="current-password"
+                minLength={8}
+                maxLength={30}
+                required
+              />
+              {isPasswordVisible ? (
+                <VisibilityOffIcon
+                  onClick={() => setIsPasswordVisible(!isPasswordVisible)}
+                  className={styles.icon}
+                />
+              ) : (
+                <VisibilityIcon
+                  onClick={() => setIsPasswordVisible(!isPasswordVisible)}
+                  className={styles.icon}
+                />
+              )}
+            </div>
 
             {isLogin ? (
               ""
@@ -115,16 +172,38 @@ const LoginPage: React.FC = () => {
                 {/* ///// */}
 
                 <label htmlFor="">Confirm Password</label>
-                <input
-                  type="password"
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
-                  placeholder="Confirm Password"
-                  autoComplete="new-password"
-                  minLength={8}
-                  maxLength={30}
-                  required
-                />
+                <div className={styles["main__form-box__passwordField"]}>
+                  <input
+                    type={isConfirmPasswordVisible ? "text" : "password"}
+                    value={userInfo.confirmPassword}
+                    onChange={(e) =>
+                      setUserInfo({
+                        ...userInfo,
+                        confirmPassword: e.target.value,
+                      })
+                    }
+                    placeholder="Confirm Password"
+                    autoComplete="new-password"
+                    minLength={8}
+                    maxLength={30}
+                    required
+                  />
+                  {isConfirmPasswordVisible ? (
+                    <VisibilityOffIcon
+                      onClick={() =>
+                        setIsConfirmPasswordVisible(!isConfirmPasswordVisible)
+                      }
+                      className={styles.icon}
+                    />
+                  ) : (
+                    <VisibilityIcon
+                      onClick={() =>
+                        setIsConfirmPasswordVisible(!isConfirmPasswordVisible)
+                      }
+                      className={styles.icon}
+                    />
+                  )}
+                </div>
               </>
             )}
 
@@ -161,6 +240,12 @@ const LoginPage: React.FC = () => {
           </div>
         </div>
       </form>
+      <CustomModal
+        message={modalMessage}
+        showModal={showModal}
+        setShowModal={setShowModal}
+        modalType={modalType}
+      />
     </>
   );
 };

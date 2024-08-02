@@ -22,7 +22,11 @@ const MainHeader: React.FC = () => {
     <header className={styles.header}>
       <div
         className={styles["header__logo"]}
-        onClick={() => navigate("/dashboard")}
+        onClick={() =>
+          page === "/" || page === "/loginPage"
+            ? navigate("/")
+            : navigate("/dashboard")
+        }
       >
         <img
           className={styles["header__logo-image"]}

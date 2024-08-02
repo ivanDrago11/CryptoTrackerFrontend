@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
-import styles from "./WalletView.module.scss";
-import CryptoTable from "../../components/CryptoTable/CryptoTable";
+import styles from "./CurrencyDetails.module.scss";
+import CryptoGraph from "../../components/CryptoGraph/CryptoGraph";
+import CryptoWalletList from "../../components/CryptoWalletList/CryptoWalletList";
+import { Wallet } from "../../store/cryptoWalletSlice";
 import { useDispatch } from "react-redux";
 import { setPage } from "../../store/headerSlice";
+import CryptoTrend from "../../components/CryptoTrends/CryptoTrend";
 import {
   Crypto,
   CryptoData1,
@@ -15,28 +18,26 @@ import {
   CryptoData8,
   CryptoData9,
   CryptoData10,
-} from "../../assets/CryptoDataSets"; // Import the data
+} from "../../assets/CryptoDataSets";
 import { CustomModal } from "../../components/CustomModal/CustomModal";
 import { useLocation } from "react-router-dom";
-import { Wallet } from "../../store/cryptoWalletSlice";
-import CryptoWalletList from "../../components/CryptoWalletList/CryptoWalletList";
 
-const WalletView: React.FC = () => {
-  const dispatch = useDispatch();
+const CurrencyDetails: React.FC = () => {
   const location = useLocation();
-  const { wallet } = location.state || {};
-  dispatch(setPage("/dashboard"));
+  const { crypto } = location.state || {};
+  const dispatch = useDispatch();
+  dispatch(setPage("/currencyDetails"));
+  // console.log(crypto);
 
   const [showModal, setShowModal] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
-  const [modalType, setModalType] = useState("form");
+  const [modalType, setModalType] = useState("");
   const [listName, setListName] = useState({ id: 0, name: "" });
-  const [selectedCrypto, setSelectedCrypto] = useState<Crypto | null>(null);
+  const [selectedWallet, setSelectedWallet] = useState<Wallet | null>(null);
   const [isSideBarVisible, setIsSideBarVisible] = useState(false);
 
   const [cryptos, setCryptos] = useState<Crypto[]>(CryptoData1);
   const [currentDataSet, setCurrentDataSet] = useState<number>(1);
-  const [selectedWallet, setSelectedWallet] = useState<Wallet | null>(null);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -83,7 +84,6 @@ const WalletView: React.FC = () => {
         break;
     }
   }, [currentDataSet]);
-
   return (
     <>
       <main
@@ -106,19 +106,12 @@ const WalletView: React.FC = () => {
             setSelectedWallet={setSelectedWallet}
           />
         </section>
-
         <section className={styles["main__dashboard"]}>
-          <div className={styles["main__dashboard__walletName"]}>
-            <h1>{wallet.name}</h1>
+          <CryptoTrend cryptos={cryptos} styles={styles} />
+          <div className={styles["main__dashboard__cryptoName"]}>
+            <h1>{crypto.name}</h1>
           </div>
-          <CryptoTable
-            walletId={wallet.id}
-            cryptos={cryptos}
-            setShowModal={setShowModal}
-            setModalType={setModalType}
-            setSelectedCrypto={setSelectedCrypto}
-            setSelectedWallet={setSelectedWallet}
-          />
+          <CryptoGraph crypto={crypto} />
           <CustomModal
             showModal={showModal}
             setShowModal={setShowModal}
@@ -126,7 +119,6 @@ const WalletView: React.FC = () => {
             modalType={modalType}
             setListName={setListName}
             listName={listName}
-            selectedCrypto={selectedCrypto}
             selectedWallet={selectedWallet}
             setSelectedWallet={setSelectedWallet}
           />
@@ -136,4 +128,4 @@ const WalletView: React.FC = () => {
   );
 };
 
-export default WalletView;
+export default CurrencyDetails;

@@ -61,6 +61,63 @@
         cursor: pointer;
       }
     }
+
+    &-userName {
+      cursor: pointer;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      border-radius: 5px;
+      position: relative;
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.127);
+      }
+
+      .arrowIcon {
+        transition: transform 0.2s ease-in-out;
+      }
+      .rotated {
+        transform: rotate(90deg);
+      }
+
+      &-options {
+        position: absolute;
+        top: 40px; /* Adjust according to your layout */
+        right: -20px;
+        border: 1px solid rgba(255, 255, 255, 0.224);
+        border-radius: 2px;
+        z-index: -1000;
+        display: flex;
+        flex-direction: column;
+        opacity: 0; /* Initially hidden */
+        transition: transform 0.5s ease-in-out;
+
+        button {
+          text-align: start;
+          background-color: $primary-color;
+          margin: 0;
+          border-radius: inherit;
+          padding: 5px 10px;
+          border: none;
+          transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        button:hover {
+          background-color: $font-color;
+          color: $primary-color;
+        }
+      }
+
+      &-options--show {
+        z-index: 1000;
+        opacity: 1; /* Fully visible */
+
+        transform: translateY(0); /* At the position */
+      }
+    }
   }
 
   &__sideBar {

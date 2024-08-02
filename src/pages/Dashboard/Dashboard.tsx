@@ -26,6 +26,7 @@ const Dashboard: React.FC = () => {
   dispatch(setPage("/dashboard"));
 
   const [showModal, setShowModal] = useState(false);
+  const [isSideBarVisible, setIsSideBarVisible] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [modalType, setModalType] = useState("form");
   const [listName, setListName] = useState({ id: 0, name: "" });
@@ -83,15 +84,26 @@ const Dashboard: React.FC = () => {
 
   return (
     <>
-      <main className={styles.main}>
+      <main
+        className={`${styles.main}
+            ${isSideBarVisible ? styles["main--expanded"] : ""}`}
+      >
         {/* MANAGE LIST FUNCTIONALITY */}
-        <CryptoWalletList
-          setShowModal={setShowModal}
-          setModalType={setModalType}
-          setIsEditing={setIsEditing}
-          setListName={setListName}
-          setSelectedWallet={setSelectedWallet}
-        />
+        <section
+          className={`${styles["main__leftSideBar"]}
+          ${isSideBarVisible ? styles["main__leftSideBar-hidden"] : ""}
+            ${isSideBarVisible ? styles["main--expanded"] : ""}`}
+        >
+          <CryptoWalletList
+            isSideBarVisible={isSideBarVisible}
+            setIsSideBarVisible={setIsSideBarVisible}
+            setShowModal={setShowModal}
+            setModalType={setModalType}
+            setIsEditing={setIsEditing}
+            setListName={setListName}
+            setSelectedWallet={setSelectedWallet}
+          />
+        </section>
         <section className={styles["main__dashboard"]}>
           <CryptoTrend cryptos={cryptos} styles={styles} />
           <CryptoTable

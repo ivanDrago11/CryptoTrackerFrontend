@@ -1,5 +1,9 @@
 import React from "react";
 import styles from "./Footer.module.scss";
+import StarPurple500Icon from "@mui/icons-material/StarPurple500";
+import ArticleIcon from "@mui/icons-material/Article";
+import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
+import FacebookIcon from "@mui/icons-material/Facebook";
 
 const Footer: React.FC = () => {
   return (
@@ -17,10 +21,30 @@ const Footer: React.FC = () => {
         <p>&copy; 2024 CryptoSphere. All rights reserved.</p>
       </div>
       <div className={styles["footer__rightSide"]}>
-        <a href="#">⭐ Features</a>
-        <a href="#">📝 About</a>
-        <a href="#">📞 Contact</a>
-        <a href="#">🔑 Login</a>
+        <a href="#">
+          <div>
+            <StarPurple500Icon className={styles.icon} />
+            <p>Features</p>
+          </div>
+        </a>
+        <a href="#">
+          <div>
+            <ArticleIcon className={styles.icon} />
+            <p>About</p>
+          </div>
+        </a>
+        <a href="#">
+          <div>
+            <LocalPhoneIcon className={styles.icon} />
+            <p>Contact</p>
+          </div>
+        </a>
+        <a href="#">
+          <div>
+            <FacebookIcon className={styles.icon} />
+            <p>Facebook</p>
+          </div>
+        </a>
       </div>
     </footer>
   );

@@ -14,7 +14,7 @@ const headerSlice = createSlice({
   reducers: {
     setPage(state, action: PayloadAction<string>) {
       state.page = action.payload;
-      console.log(state.page);
+      // console.log(state.page);
     },
   },
 });

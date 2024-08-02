@@ -22,7 +22,7 @@
     }
 
     &-box {
-      margin: 0 1rem;
+      margin: 0 0;
       display: flex;
       flex-direction: column;
 
@@ -46,6 +46,25 @@
       a {
         font-weight: 600;
       }
+
+      &__passwordField {
+        position: relative;
+        input {
+          width: 100%;
+          box-sizing: border-box; // Added box-sizing here
+        }
+        .icon {
+          position: absolute;
+          top: 10%;
+          right: 3%;
+          transition: color 0.2s;
+
+          &:hover {
+            color: rgba(255, 255, 255, 0.577);
+            cursor: pointer;
+          }
+        }
+      }
     }
 
     &-box--close {
@@ -53,3 +72,18 @@
     }
   }
 }
+
+@media (min-width: 200px) {
+  .main {
+    &__form {
+      width: 50%;
+    }
+  }
+}
+// @media (min-width: 740px) {
+//   .main {
+//     &__form {
+//       width: 80%;
+//     }
+//   }
+// }

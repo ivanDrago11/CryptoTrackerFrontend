@@ -3,6 +3,7 @@
 .main {
   width: 100%;
   display: grid;
+  flex-direction: row;
   grid-template-columns: 20% 1fr;
   opacity: 1;
   transition: grid-template-columns 0.2s ease-in-out;
@@ -33,7 +34,7 @@
     flex-direction: column;
     border-left: 1px solid rgba(255, 255, 255, 0.106);
 
-    &__walletName {
+    &__cryptoName {
       background-color: $primary-color;
       margin: 2rem 30%;
       border-radius: 10px;
@@ -66,10 +67,58 @@
       }
     }
 
-    // &__cryptoTable {
-    //   width: 68rem;
-    //   margin: 0 auto;
-    //   margin-bottom: 2rem;
-    // }
+    &__cryptoTable {
+      width: 68rem;
+      margin: 0 auto;
+      margin-bottom: 2rem;
+    }
+  }
+}
+
+@media (max-width: 1280px) {
+  .main {
+    &__dashboard {
+      &__cryptoTrend {
+        &-cryptoBox {
+          width: 17.5rem;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 1140px) {
+  .main {
+    &__dashboard {
+      &__cryptoTrend {
+        &-cryptoBox {
+          width: 14rem;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 580px) {
+  .main {
+    &__dashboard {
+      &__cryptoTrend {
+        flex-direction: column;
+        margin: 20px auto;
+        &-cryptoBox {
+          width: 30rem;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 529px) {
+  .main {
+    &__dashboard {
+      &__cryptoTrend {
+        flex-direction: column;
+        &-cryptoBox {
+          width: 300px;
+        }
+      }
+    }
   }
 }

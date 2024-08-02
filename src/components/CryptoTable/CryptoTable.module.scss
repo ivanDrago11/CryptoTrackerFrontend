@@ -29,3 +29,25 @@
     }
   }
 }
+
+@media (max-width: 1280px) {
+  .cryptoTable {
+    width: 60rem;
+  }
+}
+@media (max-width: 1140px) {
+  .cryptoTable {
+    width: 50rem;
+  }
+}
+@media (max-width: 580px) {
+  .cryptoTable {
+    width: 32rem;
+  }
+}
+
+@media (max-width: 529px) {
+  .cryptoTable {
+    width: 320px;
+  }
+}

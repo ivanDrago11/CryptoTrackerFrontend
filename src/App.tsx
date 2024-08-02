@@ -14,14 +14,12 @@ const App: React.FC = () => {
 
   useEffect(() => {
     const fetchCryptoLists = async () => {
-      const response = await dispatch(fetchWalletsThunk());
-      console.log(response);
+      await dispatch(fetchWalletsThunk());
     };
     fetchCryptoLists();
 
     const fetchCryptos = async () => {
-      const response = await dispatch(fetchCryptosThunk());
-      console.log(response);
+      await dispatch(fetchCryptosThunk());
     };
     fetchCryptos();
   });

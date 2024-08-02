@@ -18,10 +18,12 @@ import {
 
 import { Crypto } from "../../assets/CryptoDataSets"; // Import the data
 import { getFormatDate, roundNumber } from "../../utils/utils";
-import { useState } from "react";
 import { Wallet } from "../../store/cryptoWalletSlice";
 import { RootState } from "../../store";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { setPage } from "../../store/headerSlice";
+import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
 
 interface CryptoTableProps {
   walletId?: number;
@@ -40,18 +42,14 @@ const CryptoTable: React.FC<CryptoTableProps> = ({
   setSelectedCrypto,
   setSelectedWallet,
 }) => {
-  const [selected, setSelected] = useState<string[]>([]);
   const wallets = useSelector((state: RootState) => state.wallets.wallets);
-  const isSelected = (name: string) => selected.indexOf(name) !== -1;
+  const dispatch = useDispatch<ThunkDispatch<RootState, unknown, AnyAction>>();
+  const navigate = useNavigate();
 
-  // const handleSelectAllClick = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   if (event.target.checked) {
-  //     const newSelecteds = cryptos.map((n) => n.name);
-  //     setSelected(newSelecteds);
-  //     return;
-  //   }
-  //   setSelected([]);
-  // };
+  const handleNavigation = (page: string, crypto: Crypto) => {
+    navigate(page, { state: { crypto: crypto } });
+    dispatch(setPage(page));
+  };
 
   const getWallet = (walletId: number): Wallet => {
     const wallet = wallets.filter((wallet) => wallet.id === walletId);
@@ -69,26 +67,6 @@ const CryptoTable: React.FC<CryptoTableProps> = ({
     } else {
       return cryptos;
     }
-  };
-
-  const handleClick = (event: React.MouseEvent<unknown>, name: string) => {
-    const selectedIndex = selected.indexOf(name);
-    let newSelected: string[] = [];
-
-    if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, name);
-    } else if (selectedIndex === 0) {
-      newSelected = newSelected.concat(selected.slice(1));
-    } else if (selectedIndex === selected.length - 1) {
-      newSelected = newSelected.concat(selected.slice(0, -1));
-    } else if (selectedIndex > 0) {
-      newSelected = newSelected.concat(
-        selected.slice(0, selectedIndex),
-        selected.slice(selectedIndex + 1)
-      );
-    }
-
-    setSelected(newSelected);
   };
 
   return (
@@ -112,16 +90,17 @@ const CryptoTable: React.FC<CryptoTableProps> = ({
               {getCryptos(walletId, cryptos)
                 .slice(0, 8)
                 .map((crypto) => {
-                  const isItemSelected = isSelected(crypto.name);
                   const labelId = `enhanced-table-checkbox-${crypto.name}`;
 
                   return (
                     <TableRow
                       key={crypto.id}
                       hover={true}
-                      onClick={(event) => handleClick(event, crypto.name)}
+                      onClick={() =>
+                        handleNavigation("/currencyDetails", crypto)
+                      }
                       role="checkbox"
-                      aria-checked={isItemSelected}
+                      // aria-checked={isItemSelected}
                       tabIndex={-1}
                       // selected={isItemSelected}
                       sx={{}}
@@ -141,7 +120,8 @@ const CryptoTable: React.FC<CryptoTableProps> = ({
                       <TableCell align="right">
                         {walletId ? (
                           <div
-                            onClick={() => {
+                            onClick={(event) => {
+                              event.stopPropagation();
                               setShowModal(true);
                               setModalType("deleteCryptoFromWallet");
                               setSelectedCrypto(crypto);
@@ -155,7 +135,8 @@ const CryptoTable: React.FC<CryptoTableProps> = ({
                           </div>
                         ) : (
                           <div
-                            onClick={() => {
+                            onClick={(event) => {
+                              event.stopPropagation();
                               setShowModal(true);
                               setModalType("addCryptoToWallet");
                               setSelectedCrypto(crypto);

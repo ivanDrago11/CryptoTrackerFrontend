@@ -2,13 +2,16 @@ import React, { useState, useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store";
 import { AnyAction, ThunkDispatch } from "@reduxjs/toolkit";
-import { deleteWalletThunk, Wallet } from "../../store/cryptoWalletSlice";
+import { Wallet } from "../../store/cryptoWalletSlice";
 import SettingsIcon from "@mui/icons-material/Settings";
 import styles from "./CryptoWalletList.module.scss";
 import { useNavigate } from "react-router-dom";
 import { setPage } from "../../store/headerSlice";
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 export interface CryptoWalletListProps {
+  setIsSideBarVisible?: React.Dispatch<React.SetStateAction<boolean>>;
+  isSideBarVisible?: boolean;
   setShowModal: React.Dispatch<React.SetStateAction<boolean>>;
   setSelectedWallet: React.Dispatch<React.SetStateAction<Wallet | null>>;
   setListName: React.Dispatch<
@@ -22,6 +25,8 @@ export interface CryptoWalletListProps {
 }
 // CryptoList Component
 const CryptoWalletList: React.FC<CryptoWalletListProps> = ({
+  setIsSideBarVisible,
+  isSideBarVisible,
   setListName,
   setShowModal,
   setIsEditing,
@@ -30,6 +35,8 @@ const CryptoWalletList: React.FC<CryptoWalletListProps> = ({
 }) => {
   // Redux state and dispatch
   const wallets = useSelector((state: RootState) => state.wallets.wallets);
+  // const userId = useSelector((state: RootState) => state.auth.userId);
+  const userId = parseInt(JSON.parse(localStorage.getItem("userId")!));
   const dispatch = useDispatch<ThunkDispatch<RootState, unknown, AnyAction>>();
 
   // Refs and state
@@ -66,15 +73,6 @@ const CryptoWalletList: React.FC<CryptoWalletListProps> = ({
     };
   }, []);
 
-  // Handle adding a new wallet
-
-  // Handle deleting an wallet (currently a placeholder)
-  const handleDeleteItem = (id: number) => {
-    if (window.confirm("Are you sure you want to delete this wallet?")) {
-      dispatch(deleteWalletThunk({ id }));
-    }
-  };
-
   const handleNavigation = (page: string, wallet: Wallet) => {
     navigate(page, { state: { wallet: wallet } });
     dispatch(setPage(page));
@@ -84,6 +82,14 @@ const CryptoWalletList: React.FC<CryptoWalletListProps> = ({
     <>
       <section className={styles["manageList"]}>
         <h3 className={styles["manageList-title"]}>Your Wallets</h3>
+        <ArrowForwardIosIcon
+          onClick={() => setIsSideBarVisible!(!isSideBarVisible)}
+          fontSize="small"
+          className={`${styles["manageList-arrowIcon"]} ${
+            isSideBarVisible ? styles["manageList-arrowIcon--clicked"] : ""
+          }`}
+        />
+
         <button
           className={styles["manageList-button"]}
           onClick={() => {
@@ -98,54 +104,67 @@ const CryptoWalletList: React.FC<CryptoWalletListProps> = ({
 
         {/* List of crypto wallets */}
         <div className={styles["manageList__list"]}>
-          {wallets.map((wallet) => (
-            <div
-              key={wallet.id}
-              className={`${styles["manageList__list__wallet"]} ${
-                activeListItem === wallet.name ? styles.selectedItem : ""
-              }`}
-            >
-              <a>{wallet.name}</a>
-              <SettingsIcon
-                className={styles.icon}
-                onClick={() => toggleDropdown(wallet.name)}
-              />
-              {dropdownVisible === wallet.name && (
-                <div
-                  className={`${styles["manageList__list__wallet-options"]} ${
-                    dropdownVisible === wallet.name
-                      ? styles["manageList__list__wallet-options--show"]
-                      : ""
-                  }`}
-                  ref={dropdownRef}
-                >
-                  <button
-                    onClick={() => {
-                      handleNavigation("/walletView", wallet);
-                      setSelectedWallet!(wallet);
-                    }}
+          {wallets.map((wallet) =>
+            wallet.user === userId ? (
+              <div
+                key={wallet.id}
+                className={`${styles["manageList__list__wallet"]} ${
+                  activeListItem === wallet.name ? styles.selectedItem : ""
+                }`}
+                onClick={() => {
+                  handleNavigation("/walletView", wallet);
+                  setSelectedWallet!(wallet);
+                }}
+              >
+                <a>{wallet.name}</a>
+                <SettingsIcon
+                  className={styles.icon}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    toggleDropdown(wallet.name);
+                  }}
+                />
+                {dropdownVisible === wallet.name && (
+                  <div
+                    className={`${styles["manageList__list__wallet-options"]} ${
+                      dropdownVisible === wallet.name
+                        ? styles["manageList__list__wallet-options--show"]
+                        : ""
+                    }`}
+                    ref={dropdownRef}
                   >
-                    Open Wallet
-                  </button>
-                  <button
-                    onClick={() => {
-                      setListName({ id: wallet.id, name: wallet.name });
-                      setIsEditing(true);
-                      setDropdownVisible(null);
-                      setActiveListItem(null);
-                      setModalType("editWalletName");
-                      setShowModal(true);
-                    }}
-                  >
-                    Edit
-                  </button>
-                  <button onClick={() => handleDeleteItem(wallet.id)}>
-                    Delete
-                  </button>
-                </div>
-              )}
-            </div>
-          ))}
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setListName({ id: wallet.id, name: wallet.name });
+                        setIsEditing(true);
+                        setDropdownVisible(null);
+                        setActiveListItem(null);
+                        setModalType("editWalletName");
+                        setShowModal(true);
+                      }}
+                    >
+                      Edit
+                    </button>
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setListName({ id: wallet.id, name: wallet.name });
+                        setDropdownVisible(null);
+                        setActiveListItem(null);
+                        setModalType("deleteWallet");
+                        setShowModal(true);
+                      }}
+                    >
+                      Delete
+                    </button>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <></>
+            )
+          )}
         </div>
         {/* <ModalForm
           showModal={showModal}
