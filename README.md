@@ -1,30 +1,83 @@
-# React + TypeScript + Vite
+# Crypto Tracker Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the frontend part of the Crypto Tracker application built with React and TypeScript. The project uses Material UI for styling and Redux for state management.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- User authentication
+- Dashboard for displaying cryptocurrencies
+- CRUD operations for managing crypto lists
+- Responsive design
 
-## Expanding the ESLint configuration
+## Technologies
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- React
+- TypeScript
+- Redux
+- Material UI
 
-- Configure the top-level `parserOptions` property like this:
+## Getting Started
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+### Prerequisites
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- Node.js (version X.X.X)
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/yourusername/crypto-tracker-frontend.git
+    cd crypto-tracker-frontend
+    ```
+
+2. Install dependencies:
+    ```bash
+    npm install
+    # or
+    yarn install
+    ```
+
+### Running the Application
+
+1. Start the development server:
+    ```bash
+    npm start
+    # or
+    yarn start
+    ```
+
+2. Open your browser and navigate to `http://localhost:3000`.
+
+### Environment Variables
+
+Create a `.env` file in the root directory and add any required environment variables:
+```plaintext
+REACT_APP_API_URL=http://localhost:8000/api
+Project Structure
+src/components: React components
+src/store: Redux store, actions, and reducers
+src/pages: Page components for different routes
+src/utils: Utility functions
+src/assets: Static assets like images and styles
+Usage
+User Authentication
+To handle user authentication, use the useAuth hook provided in the AuthContext:
+
+typescript
+Copy code
+const { loginUser, logoutUser } = useAuth();
+Managing Crypto Lists
+To manage crypto lists, dispatch actions from the Redux store:
+
+typescript
+Copy code
+const dispatch = useDispatch();
+dispatch(addItem(newItem));
+dispatch(updateItem({ id, name }));
+dispatch(deleteItem(id));
+Contributing
+Contributions are welcome! Please open an issue or submit a pull request.
+
+License
+This project is licensed under the MIT License.
